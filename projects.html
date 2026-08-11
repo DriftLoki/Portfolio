@@ -42,9 +42,28 @@
             max-width: 100%;
             margin: 0 auto;
             display: flex;
-            justify-content: flex-end;
-            gap: 24px;
+            justify-content: space-between; /* Keeps your logo left and links right */
+            align-items: center;
             padding: 24px 60px;
+        }
+
+        /* Top-Left Header Name - Identical across all pages linking to home */
+        .nav-logo {
+            font-size: 2.2rem; 
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--accent);
+        }
+
+        .nav-links-group {
+            display: flex;
+            gap: 24px;
         }
 
         .nav-item {
@@ -69,11 +88,11 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 60px; /* Spacing between distinct project block rows */
+            gap: 60px; /* Layout break spacing between distinct project rows */
         }
 
         .page-title {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             color: var(--accent);
@@ -83,7 +102,7 @@
             margin-bottom: 20px;
         }
 
-        /* Project Entry Row Blueprint */
+        /* Project Entry Row Structure mirroring Home style */
         .project-row {
             display: flex;
             justify-content: space-between;
@@ -94,10 +113,10 @@
         }
 
         .project-row:last-child {
-            border-bottom: none; /* Removes line on the final item */
+            border-bottom: none; 
         }
 
-        /* Left Side: Information & Code Block Stack */
+        /* Left Split: Details & Code Block Context */
         .project-text-side {
             flex: 1;
             display: flex;
@@ -142,7 +161,7 @@
             text-align: justify;
         }
 
-        /* Right Side: Square Showcase Photo Frame */
+        /* Right Split: Side-car Showcase Photo Frame */
         .project-photo-side {
             flex: 0 0 280px; 
             height: 280px;
@@ -150,7 +169,7 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
-            margin-top: 54px; /* Lines up with description block start */
+            margin-top: 54px; /* Perfectly matches layout depth alignment */
         }
 
         .project-photo-side img {
@@ -176,8 +195,10 @@
 
         @media (max-width: 900px) {
             .navbar {
-                justify-content: center;
+                flex-direction: column;
+                gap: 16px;
                 padding: 18px 20px;
+                text-align: center;
             }
             .showcase-wrapper {
                 padding: 40px 20px;
@@ -190,10 +211,15 @@
     <!-- Static Top Header Bar -->
     <header>
         <nav class="navbar">
-            <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
-            <a href="mailto:eugenesotelo441s@gmail.com" class="nav-item">Contact</a>
-            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
-            <a href="projects.html" class="nav-item active">Projects</a>
+            <!-- Left linked logo routing back to index.html -->
+            <a href="index.html" class="nav-logo">Eugenio Sotelo</a>
+            
+            <div class="nav-links-group">
+                <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
+                <a href="mailto:eugenesotelo441s@gmail.com" class="nav-item">Contact</a>
+                <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+                <a href="projects.html" class="nav-item active">Projects</a>
+            </div>
         </nav>
     </header>
 
