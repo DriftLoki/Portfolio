@@ -42,7 +42,7 @@
             max-width: 100%;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between; /* Keeps your logo left and links right */
+            justify-content: space-between; 
             align-items: center;
             padding: 24px 60px;
         }
@@ -88,7 +88,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 60px; /* Layout break spacing between distinct project rows */
+            gap: 60px; 
         }
 
         .page-title {
@@ -123,6 +123,7 @@
             flex-direction: column;
         }
 
+        /* Refined Classification Label - Numbers and slashes successfully removed */
         .catalog-tag {
             font-size: 0.8rem;
             font-weight: 600;
@@ -169,7 +170,7 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
-            margin-top: 54px; /* Perfectly matches layout depth alignment */
+            margin-top: 54px; 
         }
 
         .project-photo-side img {
@@ -211,7 +212,6 @@
     <!-- Static Top Header Bar -->
     <header>
         <nav class="navbar">
-            <!-- Left linked logo routing back to index.html -->
             <a href="index.html" class="nav-logo">Eugenio Sotelo</a>
             
             <div class="nav-links-group">
@@ -230,7 +230,7 @@
         <!-- Project 01: Autonomous Rover Platform -->
         <div class="project-row">
             <div class="project-text-side">
-                <div class="catalog-tag">System / 01</div>
+                <div class="catalog-tag">System</div>
                 <h2 class="title-string">Autonomous Rover Platform</h2>
                 <div class="meta-string">Class Project — April 2026</div>
                 <div class="details-container">
@@ -238,14 +238,15 @@
                 </div>
             </div>
             <div class="project-photo-side">
-                <img src="rover.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
+                <!-- Image path refactored to match project name format exactly -->
+                <img src="Autonomous Rover Platform.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
 
         <!-- Project 02: 32-Bit MIPS Processor -->
         <div class="project-row">
             <div class="project-text-side">
-                <div class="catalog-tag">Architecture / 02</div>
+                <div class="catalog-tag">Architecture</div>
                 <h2 class="title-string">32-Bit MIPS Processor</h2>
                 <div class="meta-string">Research Project — 2025</div>
                 <div class="details-container">
@@ -253,14 +254,15 @@
                 </div>
             </div>
             <div class="project-photo-side">
-                <img src="mips-cpu.jpg" alt="MIPS CPU Architecture" onerror="this.src='https://unsplash.com'">
+                <!-- Image path refactored to match project name format exactly -->
+                <img src="32-Bit MIPS Processor.jpg" alt="MIPS CPU Architecture" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
 
         <!-- Project 03: Solenoid Driver PCB -->
         <div class="project-row">
             <div class="project-text-side">
-                <div class="catalog-tag">Hardware / 03</div>
+                <div class="catalog-tag">Hardware</div>
                 <h2 class="title-string">Solenoid Driver PCB</h2>
                 <div class="meta-string">Personal Project — February 2026</div>
                 <div class="details-container">
@@ -268,7 +270,8 @@
                 </div>
             </div>
             <div class="project-photo-side">
-                <img src="pcb-driver.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
+                <!-- Image path refactored to match project name format exactly -->
+                <img src="Solenoid Driver PCB.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
 
