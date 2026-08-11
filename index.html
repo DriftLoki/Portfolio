@@ -44,7 +44,7 @@
             display: flex;
             justify-content: flex-end;
             gap: 24px;
-            padding: 24px 60px; /* Kept aligned with the main content edges below */
+            padding: 24px 60px;
         }
 
         .nav-item {
@@ -61,33 +61,32 @@
             color: var(--accent);
         }
 
-        /* Expanded Master Alignment Area */
+        /* Master Viewport Wrapper */
         .layout-wrapper {
             flex: 1;
             display: flex;
-            align-items: center; 
+            align-items: center;
             width: 100%;
         }
 
-        /* Split Layout Box - Pushes sections to the absolute outer edges */
+        /* Main Split Column Layout Container */
         .homepage-layout {
             width: 100%;
             max-width: 100%;
-            padding: 40px 60px; /* Gives professional breathing room at the screen boundaries */
+            padding: 40px 60px;
             display: flex;
-            justify-content: space-between; /* Automatically throws red box left and white box right */
+            justify-content: space-between;
             gap: 60px;
             align-items: flex-start;
         }
 
-        /* [RED BOX] Left Column: Root Positioned Photo & Name Box */
+        /* [LEFT SIDE] Profile Photo Container Column */
         .photo-column {
             flex: 0 0 400px; 
             display: flex;
             flex-direction: column;
         }
 
-        /* Refined Name Heading - Fully Centered over Image */
         .profile-name {
             font-size: 2.2rem; 
             font-weight: 700;
@@ -113,29 +112,36 @@
             filter: grayscale(10%);
         }
 
-        /* [WHITE BOX] Right Column: Centered Showcase Panel */
+        /* [RIGHT SIDE] Master Content Showcase Column */
         .content-column {
-            flex: 0 1 650px; /* Constrains text layout card from trailing off too far */
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 64px; /* Matches perfectly with the left side baseline tracking */
-        }
-
-        /* Recent Project Presentation Layout */
-        .recent-project-container {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
+            padding-top: 64px; 
         }
 
         .section-label {
-            font-size: 0.75rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.15em;
-            color: var(--text-secondary);
+            color: var(--accent);
             text-transform: uppercase;
             margin-bottom: 12px;
+        }
+
+        /* Project Split Layout Component - Puts info on left, project photo on right */
+        .project-display-split {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        .project-text-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-title {
@@ -147,25 +153,57 @@
             margin-bottom: 6px;
         }
 
-        .project-date {
+        .project-meta-line {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            font-variant-numeric: tabular-nums;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* Structural Detail Description block */
         .detail-block {
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 28px;
+            padding: 24px;
             color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
             text-align: justify;
         }
 
-        /* Responsive Mobile Layout Breakpoint Overrides */
+        /* [RED CONTAINER BOX IN SCREENSHOT] Side-car Project Thumbnail Photo Frame */
+        .project-photo-side {
+            flex: 0 0 280px; /* Gives it a neat, square profile format */
+            height: 280px;
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 54px; /* Perfectly links up with the start of your detail text */
+        }
+
+        .project-photo-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive Mobile Layout Adaptations */
+        @media (max-width: 1024px) {
+            .project-display-split {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .project-photo-side {
+                margin-top: 0;
+                width: 100%;
+                max-width: 320px;
+                height: 240px;
+            }
+        }
+
         @media (max-width: 900px) {
             .navbar {
                 justify-content: center;
@@ -174,7 +212,6 @@
 
             .homepage-layout {
                 flex-direction: column;
-                justify-content: flex-start;
                 gap: 40px;
                 padding: 20px;
             }
@@ -187,17 +224,11 @@
             }
 
             .content-column {
-                flex: 1;
-                width: 100%;
                 padding-top: 0;
             }
 
             .photo-box {
                 height: 400px;
-            }
-
-            .project-title {
-                font-size: 1.6rem;
             }
         }
     </style>
@@ -208,8 +239,8 @@
     <header>
         <nav class="navbar">
             <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
-            <a href="mailto:eugeniopanayiotis@gmail.com" class="nav-item">Contact</a>
-            <a href="https://github.com/DriftLoki" target="_blank" class="nav-item">GitHub</a>
+            <a href="mailto:eugenesotelo441s@gmail.com" class="nav-item">Contact</a>
+            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
             <a href="projects.html" class="nav-item">Projects</a>
         </nav>
     </header>
@@ -218,7 +249,7 @@
     <div class="layout-wrapper">
         <main class="homepage-layout">
             
-            
+            <!-- Left Column: Profile Picture Frame -->
             <div class="photo-column">
                 <h1 class="profile-name">Eugenio Sotelo</h1>
                 <div class="photo-box">
@@ -226,15 +257,27 @@
                 </div>
             </div>
 
-            <!-- [WHITE BOX AREA] Right Column: Showcase Block Stack -->
+            <!-- Right Column: Project Showcase Splitting Panel -->
             <div class="content-column">
-                <div class="recent-project-container">
-                    <div class="section-label">Latest Integration / Showcase</div>
-                    <h2 class="project-title">Autonomous Rover Platform</h2>
-                    <span class="project-date">April 2026</span>
-                </div>
-                <div class="detail-block">
-                    Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
+                <div class="section-label">Latest Integration / Showcase</div>
+                
+                <div class="project-display-split">
+                    
+                    <!-- Text side within the right layout pane -->
+                    <div class="project-text-side">
+                        <h2 class="project-title">Autonomous Rover Platform</h2>
+                        <div class="project-meta-line">Class Project — April 2026</div>
+                        
+                        <div class="detail-block">
+                            Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
+                        </div>
+                    </div>
+
+                    <!-- Project Image Frame side-car directly matching your red layout box markup -->
+                    <div class="project-photo-side">
+                        <img src="rover.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
+                    </div>
+
                 </div>
             </div>
 
