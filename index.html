@@ -39,12 +39,12 @@
         }
 
         .navbar {
-            max-width: 12000px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: flex-end;
             gap: 24px;
-            padding: 24px  20px;
+            padding: 24px 20px;
         }
 
         .nav-item {
@@ -61,7 +61,7 @@
             color: var(--accent);
         }
 
-        /* Split Blueprint Layout Box - Centered vertically below header */
+        /* Split Layout Box - Centers content area smoothly */
         .layout-wrapper {
             flex: 1;
             display: flex;
@@ -75,20 +75,31 @@
             width: 100%;
             padding: 40px 20px;
             display: flex;
-            gap: 50px;
-            /* Changed from flex-start to align elements completely at the top row edge */
-            align-items: stretch; 
+            gap: 60px; /* Clean spacing break between the columns */
+            align-items: flex-start;
         }
 
-        /* Left Column: Raised Personal Photo Frame */
+        /* Left Column: Configured to pull left and center the name */
         .photo-column {
-            flex: 0 0 480px;
-            transform: translate(-180px, -10px);
+            flex: 0 0 400px; 
+            display: flex;
+            flex-direction: column;
+            margin-left: -50px; /* Shifts the entire section exactly 50px to the left */
+        }
+
+        /* Refined Name Heading - Fully Centered over Image */
+        .profile-name {
+            font-size: 2.2rem; 
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-align: center; /* Centers your name cleanly over the asset box width boundary */
+            margin-bottom: 24px;
         }
 
         .photo-box {
             width: 100%;
-            height: 580px;
+            height: 520px; 
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 4px;
@@ -102,18 +113,20 @@
             filter: grayscale(10%);
         }
 
-        /* Right Column: Content Block Stack */
+        /* Right Column: Clean Content Block Stack */
         .content-column {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            padding-top: 64px; /* Perfectly matches title baseline alignment on the left */
         }
 
-        /* Recent Project Meta Presentation Box */
+        /* Recent Project Presentation Layout */
         .recent-project-container {
             display: flex;
             flex-direction: column;
+            margin-bottom: 20px;
         }
 
         .section-label {
@@ -122,22 +135,16 @@
             letter-spacing: 0.15em;
             color: var(--text-secondary);
             text-transform: uppercase;
-            margin-bottom: 6px;
-            margin-top: 2px; /* Slight alignment calibration to lock text perfectly with photo edge */
-        }
-
-        .project-identity {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .project-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 6px;
         }
 
         .project-date {
@@ -151,14 +158,14 @@
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 24px;
+            padding: 28px;
             color: var(--text-secondary);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.7;
             text-align: justify;
         }
 
-        /* Responsive Mobile Layout Adaptations */
+        /* Responsive Mobile Overrides */
         @media (max-width: 768px) {
             .navbar {
                 justify-content: center;
@@ -167,28 +174,33 @@
 
             .homepage-layout {
                 flex-direction: column;
-                gap: 30px;
+                gap: 40px;
                 padding: 20px;
             }
 
             .photo-column {
                 flex: 1;
                 width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
+                max-width: 340px;
+                margin: 0 auto; /* Resets negative side margins smoothly on narrow screens */
+            }
+
+            .profile-name {
+                font-size: 1.8rem;
+                text-align: center;
+                margin-bottom: 14px;
+            }
+
+            .content-column {
+                padding-top: 0;
             }
 
             .photo-box {
-                height: 320px;
-            }
-
-            .project-identity {
-                flex-direction: column;
-                gap: 4px;
+                height: 400px;
             }
 
             .project-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -200,7 +212,7 @@
         <nav class="navbar">
             <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
             <a href="mailto:eugeniopanayiotis@gmail.com" class="nav-item">Contact</a>
-            <a href="https://github.com/DriftLoki" target="_blank" class="nav-item">GitHub</a>
+            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
             <a href="projects.html" class="nav-item">Projects</a>
         </nav>
     </header>
@@ -209,26 +221,23 @@
     <div class="layout-wrapper">
         <main class="homepage-layout">
             
-            <!-- Left Column: Profile Picture Frame -->
+            <!-- Left Column: Profile Picture Segment -->
             <div class="photo-column">
+                <h1 class="profile-name">Eugenio Sotelo</h1>
                 <div class="photo-box">
                     <img src="profile.jpg" alt="Eugenio Sotelo" onerror="this.src='https://unsplash.com'">
                 </div>
             </div>
 
-            <!-- Right Column: Recent Project Context Block -->
+            <!-- Right Column: Recent Project Showcase Segment -->
             <div class="content-column">
                 <div class="recent-project-container">
                     <div class="section-label">Latest Integration / Showcase</div>
-                    
-                    
-                        <h1 class="project-title">Autonomous Rover Platform</h1>
-                        <span class="project-date">April 2026</span>
-                    </div>
-
-                    <div class="detail-block">
-                        Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
-                    </div>
+                    <h2 class="project-title">Autonomous Rover Platform</h2>
+                    <span class="project-date">April 2026</span>
+                </div>
+                <div class="detail-block">
+                    Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
                 </div>
             </div>
 
