@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eugenio Sotelo | Projects</title>
+    <title>Eugenio Sotelo | Portfolio</title>
     <style>
         /* Modern Minimalist High-Contrast Palette */
         :root {
@@ -27,15 +27,14 @@
             font-family: var(--font-stack);
             line-height: 1.5;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Top Sticky Minimalist Navbar */
+        /* Static Global Top Navigation Bar */
         header {
-            position: sticky;
-            top: 0;
-            background-color: rgba(11, 11, 12, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+            width: 100%;
+            background-color: var(--bg);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -43,222 +42,197 @@
             max-width: 900px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .nav-logo {
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
+            justify-content: flex-end;
             gap: 24px;
+            padding: 24px 20px;
         }
 
         .nav-item {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: color 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .nav-item:hover, .nav-item.active {
             color: var(--text-primary);
         }
 
-        /* Main Minimalist Showcase Layout */
-        .showcase {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-        }
-
-        /* Wireframe Project Item Row (Inspired by ramios.zip) */
-        .project-row {
+        /* Split Blueprint Layout Box - Centered vertically below header */
+        .layout-wrapper {
+            flex: 1;
             display: flex;
-            gap: 40px;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
-        /* Left Side: Square Display Asset */
-        .asset-box {
-            flex: 0 0 160px;
-            height: 160px;
+        .homepage-layout {
+            max-width: 900px;
+            width: 100%;
+            padding: 40px 20px;
+            display: flex;
+            gap: 50px;
+            /* Changed from flex-start to align elements completely at the top row edge */
+            align-items: stretch; 
+        }
+
+        /* Left Column: Raised Personal Photo Frame */
+        .photo-column {
+            flex: 0 0 300px;
+        }
+
+        .photo-box {
+            width: 100%;
+            height: 380px;
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             overflow: hidden;
         }
 
-        .asset-box img {
+        .photo-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
+            filter: grayscale(10%);
         }
 
-        .project-row:hover .asset-box img {
-            filter: grayscale(0%);
-        }
-
-        /* Right Side: Structural Information Stack */
-        .meta-stack {
+        /* Right Column: Content Block Stack */
+        .content-column {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Recent Project Meta Presentation Box */
+        .recent-project-container {
             display: flex;
             flex-direction: column;
         }
 
-        .meta-header {
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            margin-top: 2px; /* Slight alignment calibration to lock text perfectly with photo edge */
+        }
+
+        .project-identity {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
-        .catalog-tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-        }
-
-        .title-string {
-            font-size: 1.4rem;
+        .project-title {
+            font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: -0.01em;
             color: var(--text-primary);
-            margin-top: 4px;
         }
 
-        .date-string {
-            font-size: 0.9rem;
+        .project-date {
+            font-size: 0.95rem;
             color: var(--text-secondary);
             font-variant-numeric: tabular-nums;
         }
 
-        /* Detail container box mimicking sketch details container */
-        .details-container {
-            font-size: 0.95rem;
+        /* Structural Detail Description block */
+        .detail-block {
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
             color: var(--text-secondary);
-            max-width: 580px;
+            font-size: 1rem;
+            line-height: 1.6;
             text-align: justify;
         }
 
-        /* Responsive Mobile Stack Overrides */
-        @media (max-width: 640px) {
-            .project-row {
+        /* Responsive Mobile Layout Adaptations */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: center;
+                padding: 18px 20px;
+            }
+
+            .homepage-layout {
                 flex-direction: column;
-                gap: 20px;
-                padding: 30px 0;
+                gap: 30px;
+                padding: 20px;
             }
 
-            .asset-box {
-                flex: 0 0 140px;
-                width: 140px;
-                height: 140px;
+            .photo-column {
+                flex: 1;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
             }
 
-            .title-string {
-                font-size: 1.25rem;
+            .photo-box {
+                height: 320px;
+            }
+
+            .project-identity {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Sticky Header -->
+    <!-- Static Top Header Bar -->
     <header>
         <nav class="navbar">
-            <a href="index.html" class="nav-logo">Eugenio Sotelo</a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-item">Home</a>
-                <a href="projects.html" class="nav-item active">Projects</a>
-                <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
-            </div>
+            <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
+            <a href="mailto:eugeniopanayiotis@gmail.com" class="nav-item">Contact</a>
+            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+            <a href="projects.html" class="nav-item">Projects</a>
         </nav>
     </header>
 
-    <!-- Main Content Grid -->
-    <main class="showcase">
-        <h2 class="section-header">Selected Work & Engineering Systems</h2>
-
-        <!-- Project 01 -->
-        <div class="project-row">
-            <div class="asset-box">
-                <img src="mips-cpu.jpg" alt="MIPS CPU" onerror="this.src='https://unsplash.com'">
+    <!-- Main Content Alignment Area -->
+    <div class="layout-wrapper">
+        <main class="homepage-layout">
+            
+            <!-- Left Column: Profile Picture Frame -->
+            <div class="photo-column">
+                <div class="photo-box">
+                    <img src="profile.jpg" alt="Eugenio Sotelo" onerror="this.src='https://unsplash.com'">
+                </div>
             </div>
-            <div class="meta-stack">
-                <div class="meta-header">
-                    <div>
-                        <div class="catalog-tag">My Projects / 01</div>
-                        <h3 class="title-string">32-Bit MIPS Processor</h3>
+
+            <!-- Right Column: Recent Project Context Block -->
+            <div class="content-column">
+                <div class="recent-project-container">
+                    <div class="section-label">Latest Integration / Showcase</div>
+                    
+                    
+                        <h1 class="project-title">Autonomous Rover Platform</h1>
+                        <span class="project-date">April 2026</span>
                     </div>
-                    <span class="date-string">2025</span>
-                </div>
-                <div class="details-container">
-                    A custom processor architecture built to execute hardware instructions efficiently. Designed and implemented logic maps, verification sequences, and execution safety profiles using systematic digital design pipelines.
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 02 -->
-        <div class="project-row">
-            <div class="asset-box">
-                <img src="rover.jpg" alt="Autonomous Rover" onerror="this.src='https://unsplash.com'">
-            </div>
-            <div class="meta-stack">
-                <div class="meta-header">
-                    <div>
-                        <div class="catalog-tag">My Projects / 02</div>
-                        <h3 class="title-string">Autonomous Rover Platform</h3>
+                    <div class="detail-block">
+                        Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
                     </div>
-                    <span class="date-string">2026</span>
-                </div>
-                <div class="details-container">
-                    An open-source terrestrial robotics platform combining custom hardware infrastructure and edge artificial intelligence logic execution. Built as a low-cost framework for real-world environmental interaction.
                 </div>
             </div>
-        </div>
 
-        <!-- Project 03 -->
-        <div class="project-row">
-            <div class="asset-box">
-                <img src="pcb-driver.jpg" alt="Solenoid Driver PCB" onerror="this.src='https://unsplash.com'">
-            </div>
-            <div class="meta-stack">
-                <div class="meta-header">
-                    <div>
-                        <div class="catalog-tag">My Projects / 03</div>
-                        <h3 class="title-string">Solenoid Driver PCB</h3>
-                    </div>
-                    <span class="date-string">2026</span>
-                </div>
-                <div class="details-container">
-                    Custom printed circuit board schematic and routing engineered for mechatronic high-rate-of-fire loop control. Features strict voltage line decoupling topologies built safely for prototype hardware configurations.
-                </div>
-            </div>
-        </div>
-
-    </main>
+        </main>
+    </div>
 
 </body>
 </html>
