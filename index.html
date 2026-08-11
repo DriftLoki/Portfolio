@@ -4,9 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eugenio Sotelo | Portfolio</title>
+    <style>
+        /* Distinct Stealth-Tech Color Palette */
+        :root {
+            --bg-primary: #121214;
+            --bg-secondary: #1a1a1e;
+            --bg-accent: #26262b;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --teal-bright: #0ea5e9;
+            --speed: 0.25s ease;
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sticky Navigation Bar */
+        header {
+            background-color: rgba(26, 26, 30, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px 20px;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 20px;
+            padding: 6px 0;
+            position: relative;
+            transition: var(--speed);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--teal-bright);
+            transition: var(--speed);
+        }
+
+        .nav-link:hover {
+            color: var(--teal-bright);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Identity Segment */
+        .hero {
+            padding: 40px 20px 20px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-badge {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: var(--speed);
+        }
+
+        .profile-badge:hover {
+            transform: translateY(-3px);
+            border-color: rgba(14, 165, 233, 0.4);
+        }
+
+        .profile-title {
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        /* Multi-Column Background Section */
+        .main-showcase {
+            flex: 1;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .showcase-grid {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .info-panel {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-tag {
+            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-tag::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--teal-bright);
+            border-radius: 2px;
+        }
+
+        .panel-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Center Framed Image Container */
+        .portrait-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .display-photo {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: var(--speed);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .display-photo:hover {
+            transform: scale(1.03);
+            border-color: var(--teal-bright);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: var(--bg-secondary);
+        }
+
+        /* Responsive Mobile Layout Adaptations */
+        @media (max-width: 968px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .info-panel {
+                text-align: center;
+                padding: 24px;
+            }
+
+            .section-tag::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .portrait-frame {
+                order: -1; /* Pushes picture to top on small monitors */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .nav-link {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Site is successfully under construction.</p>
+
+    <!-- Top Sticky Header Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="https://github.com/DriftLoki" target="_blank" class="nav-link">GitHub</a>
+            <a href="mailto:eugenesotelo441@gmail.com" class="nav-link">Contact</a>
+            <!-- Tip: Once you build your subpages or add a resume, update these names -->
+            <a href="#" class="nav-link">Projects</a>
+            <a href="#" class="nav-link">Resume</a>
+        </nav>
+    </header>
+
+    <!-- Main Intro Badge -->
+    <section class="hero">
+        <div class="profile-badge">
+            <h1 class="profile-title">Eugenio Sotelo</h1>
+        </div>
+    </section>
+
+    <!-- Balanced Three-Column Desktop Block / Stacking Mobile Block -->
+    <section class="main-showcase">
+        <div class="showcase-grid">
+            
+            <!-- Left Info Block -->
+            <div class="info-panel">
+                <h2 class="section-tag">Education</h2>
+                <p class="panel-text">
+                    B.S. Computer Engineering graduate from Florida Polytechnic University. Continuing advanced engineering and hardware system methodologies within the Fall Graduate Cohort.
+                </p>
+            </div>
+
+            <!-- Center Visual Asset Frame -->
+            <div class="portrait-frame">
+                <!-- Drop your profile picture file into your repo and name it 'profile.jpg' -->
+                <img src="profile.jpg" alt="Eugenio Sotelo" class="display-photo" onerror="this.src='https://unsplash.com'">
+            </div>
+
+            <!-- Right Info Block -->
+            <div class="info-panel">
+                <h2 class="section-tag">Focus</h2>
+                <p class="panel-text">
+                    Specializing in digital processor design, embedded firmware architectures, autonomous mechatronic deployment, and printed circuit board instrumentation loops.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Segment -->
+    <footer>
+        <p>&copy; 2026 Eugenio Sotelo. Hosted via GitHub Pages.</p>
+    </footer>
+
 </body>
 </html>
