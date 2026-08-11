@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugenio Sotelo | Projects</title>
+    <style>
+        /* Modern Minimalist High-Contrast Palette */
+        :root {
+            --bg: #0b0b0c;
+            --text-primary: #ffffff;
+            --text-secondary: #88888b;
+            --border-color: #222224;
+            --accent: #c4fc04;
+            --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Static Global Top Navigation Bar */
+        header {
+            width: 100%;
+            background-color: var(--bg);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .navbar {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 24px;
+            padding: 24px 60px;
+        }
+
+        .nav-item {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--accent);
+        }
+
+        /* Projects Main Alignment Container */
+        .showcase-wrapper {
+            width: 100%;
+            max-width: 100%;
+            padding: 60px 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 60px; /* Spacing between distinct project block rows */
+        }
+
+        .page-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Project Entry Row Blueprint */
+        .project-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 60px;
+        }
+
+        .project-row:last-child {
+            border-bottom: none; /* Removes line on the final item */
+        }
+
+        /* Left Side: Information & Code Block Stack */
+        .project-text-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .catalog-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .title-string {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .meta-string {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .details-container {
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* Right Side: Square Showcase Photo Frame */
+        .project-photo-side {
+            flex: 0 0 280px; 
+            height: 280px;
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 54px; /* Lines up with description block start */
+        }
+
+        .project-photo-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile View Compatibility Overrides */
+        @media (max-width: 1024px) {
+            .project-row {
+                flex-direction: column;
+                gap: 30px;
+                padding-bottom: 40px;
+            }
+            .project-photo-side {
+                margin-top: 0;
+                width: 100%;
+                max-width: 320px;
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                justify-content: center;
+                padding: 18px 20px;
+            }
+            .showcase-wrapper {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Static Top Header Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
+            <a href="mailto:eugenesotelo441s@gmail.com" class="nav-item">Contact</a>
+            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+            <a href="projects.html" class="nav-item active">Projects</a>
+        </nav>
+    </header>
+
+    <!-- Main Dynamic Listing Grid -->
+    <main class="showcase-wrapper">
+        <h1 class="page-title">Technical Inventory</h1>
+
+        <!-- Project 01: Autonomous Rover Platform -->
+        <div class="project-row">
+            <div class="project-text-side">
+                <div class="catalog-tag">System / 01</div>
+                <h2 class="title-string">Autonomous Rover Platform</h2>
+                <div class="meta-string">Class Project — April 2026</div>
+                <div class="details-container">
+                    Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
+                </div>
+            </div>
+            <div class="project-photo-side">
+                <img src="rover.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+
+        <!-- Project 02: 32-Bit MIPS Processor -->
+        <div class="project-row">
+            <div class="project-text-side">
+                <div class="catalog-tag">Architecture / 02</div>
+                <h2 class="title-string">32-Bit MIPS Processor</h2>
+                <div class="meta-string">Research Project — 2025</div>
+                <div class="details-container">
+                    A custom processor architecture built to execute hardware instructions efficiently. Designed and implemented logic maps, verification sequences, and execution safety profiles using systematic digital design pipelines.
+                </div>
+            </div>
+            <div class="project-photo-side">
+                <img src="mips-cpu.jpg" alt="MIPS CPU Architecture" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+
+        <!-- Project 03: Solenoid Driver PCB -->
+        <div class="project-row">
+            <div class="project-text-side">
+                <div class="catalog-tag">Hardware / 03</div>
+                <h2 class="title-string">Solenoid Driver PCB</h2>
+                <div class="meta-string">Personal Project — February 2026</div>
+                <div class="details-container">
+                    Custom printed circuit board schematic and routing engineered for mechatronic high-rate-of-fire loop control. Features strict voltage line decoupling topologies built safely for prototype hardware configurations.
+                </div>
+            </div>
+            <div class="project-photo-side">
+                <img src="pcb-driver.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
