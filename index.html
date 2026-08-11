@@ -39,12 +39,12 @@
         }
 
         .navbar {
-            max-width: 1100px;
+            max-width: 100%;
             margin: 0 auto;
             display: flex;
             justify-content: flex-end;
             gap: 24px;
-            padding: 24px 20px;
+            padding: 24px 60px; /* Kept aligned with the main content edges below */
         }
 
         .nav-item {
@@ -61,30 +61,30 @@
             color: var(--accent);
         }
 
-        /* Split Layout Box - Centers content area smoothly */
+        /* Expanded Master Alignment Area */
         .layout-wrapper {
             flex: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center; 
             width: 100%;
         }
 
+        /* Split Layout Box - Pushes sections to the absolute outer edges */
         .homepage-layout {
-            max-width: 1100px;
             width: 100%;
-            padding: 40px 20px;
+            max-width: 100%;
+            padding: 40px 60px; /* Gives professional breathing room at the screen boundaries */
             display: flex;
-            gap: 60px; /* Clean spacing break between the columns */
+            justify-content: space-between; /* Automatically throws red box left and white box right */
+            gap: 60px;
             align-items: flex-start;
         }
 
-        /* Left Column: Configured to pull left and center the name */
+        /* [RED BOX] Left Column: Root Positioned Photo & Name Box */
         .photo-column {
             flex: 0 0 400px; 
             display: flex;
             flex-direction: column;
-            margin-left: -50px; /* Shifts the entire section exactly 50px to the left */
         }
 
         /* Refined Name Heading - Fully Centered over Image */
@@ -93,7 +93,7 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--text-primary);
-            text-align: center; /* Centers your name cleanly over the asset box width boundary */
+            text-align: center; 
             margin-bottom: 24px;
         }
 
@@ -113,13 +113,13 @@
             filter: grayscale(10%);
         }
 
-        /* Right Column: Clean Content Block Stack */
+        /* [WHITE BOX] Right Column: Centered Showcase Panel */
         .content-column {
-            flex: 1;
+            flex: 0 1 650px; /* Constrains text layout card from trailing off too far */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 64px; /* Perfectly matches title baseline alignment on the left */
+            padding-top: 64px; /* Matches perfectly with the left side baseline tracking */
         }
 
         /* Recent Project Presentation Layout */
@@ -165,8 +165,8 @@
             text-align: justify;
         }
 
-        /* Responsive Mobile Overrides */
-        @media (max-width: 768px) {
+        /* Responsive Mobile Layout Breakpoint Overrides */
+        @media (max-width: 900px) {
             .navbar {
                 justify-content: center;
                 padding: 18px 20px;
@@ -174,6 +174,7 @@
 
             .homepage-layout {
                 flex-direction: column;
+                justify-content: flex-start;
                 gap: 40px;
                 padding: 20px;
             }
@@ -182,16 +183,12 @@
                 flex: 1;
                 width: 100%;
                 max-width: 340px;
-                margin: 0 auto; /* Resets negative side margins smoothly on narrow screens */
-            }
-
-            .profile-name {
-                font-size: 1.8rem;
-                text-align: center;
-                margin-bottom: 14px;
+                margin: 0 auto;
             }
 
             .content-column {
+                flex: 1;
+                width: 100%;
                 padding-top: 0;
             }
 
@@ -212,7 +209,7 @@
         <nav class="navbar">
             <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
             <a href="mailto:eugeniopanayiotis@gmail.com" class="nav-item">Contact</a>
-            <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+            <a href="https://github.com/DriftLoki" target="_blank" class="nav-item">GitHub</a>
             <a href="projects.html" class="nav-item">Projects</a>
         </nav>
     </header>
@@ -221,7 +218,7 @@
     <div class="layout-wrapper">
         <main class="homepage-layout">
             
-            <!-- Left Column: Profile Picture Segment -->
+            
             <div class="photo-column">
                 <h1 class="profile-name">Eugenio Sotelo</h1>
                 <div class="photo-box">
@@ -229,7 +226,7 @@
                 </div>
             </div>
 
-            <!-- Right Column: Recent Project Showcase Segment -->
+            <!-- [WHITE BOX AREA] Right Column: Showcase Block Stack -->
             <div class="content-column">
                 <div class="recent-project-container">
                     <div class="section-label">Latest Integration / Showcase</div>
