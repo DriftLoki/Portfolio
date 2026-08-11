@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eugenio Sotelo | Portfolio</title>
+    <title>Eugenio Sotelo | Projects</title>
     <style>
-        /* Distinct Stealth-Tech Color Palette */
+        /* Modern Minimalist High-Contrast Palette */
         :root {
-            --bg-primary: #121214;
-            --bg-secondary: #1a1a1e;
-            --bg-accent: #26262b;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --teal-bright: #0ea5e9;
-            --speed: 0.25s ease;
+            --bg: #0b0b0c;
+            --text-primary: #ffffff;
+            --text-secondary: #88888b;
+            --border-color: #222224;
+            --accent: #0ea5e9;
+            --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* Base Resets */
         * {
             margin: 0;
             padding: 0;
@@ -24,266 +22,243 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            line-height: 1.5;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Sticky Navigation Bar */
+        /* Top Sticky Minimalist Navbar */
         header {
-            background-color: rgba(26, 26, 30, 0.85);
-            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
+            background-color: rgba(11, 11, 12, 0.8);
+            backdrop-filter: blur(12px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .navbar {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 18px 20px;
+            padding: 20px;
         }
 
-        .nav-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 0 20px;
-            padding: 6px 0;
-            position: relative;
-            transition: var(--speed);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--teal-bright);
-            transition: var(--speed);
-        }
-
-        .nav-link:hover {
-            color: var(--teal-bright);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Identity Segment */
-        .hero {
-            padding: 40px 20px 20px 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-badge {
-            background-color: var(--bg-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: var(--speed);
-        }
-
-        .profile-badge:hover {
-            transform: translateY(-3px);
-            border-color: rgba(14, 165, 233, 0.4);
-        }
-
-        .profile-title {
-            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+        .nav-logo {
             font-weight: 700;
-            letter-spacing: -0.025em;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
         }
 
-        /* Multi-Column Background Section */
-        .main-showcase {
-            flex: 1;
-            padding: 40px 20px;
+        .nav-links {
             display: flex;
-            align-items: center;
+            gap: 24px;
         }
 
-        .showcase-grid {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
+        .nav-item {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--text-primary);
+        }
+
+        /* Main Minimalist Showcase Layout */
+        .showcase {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Wireframe Project Item Row (Inspired by ramios.zip) */
+        .project-row {
+            display: flex;
             gap: 40px;
-            align-items: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
         }
 
-        .info-panel {
-            background-color: var(--bg-secondary);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+        /* Left Side: Square Display Asset */
+        .asset-box {
+            flex: 0 0 160px;
+            height: 160px;
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .asset-box img {
+            width: 100%;
             height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .project-row:hover .asset-box img {
+            filter: grayscale(0%);
+        }
+
+        /* Right Side: Structural Information Stack */
+        .meta-stack {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
-        .section-tag {
-            font-size: clamp(1.1rem, 1.5vw, 1.4rem);
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-main);
-            position: relative;
-            padding-bottom: 8px;
-        }
-
-        .section-tag::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--teal-bright);
-            border-radius: 2px;
-        }
-
-        .panel-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Center Framed Image Container */
-        .portrait-frame {
+        .meta-header {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
         }
 
-        .display-photo {
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            transition: var(--speed);
-            border: 2px solid rgba(255, 255, 255, 0.05);
+        .catalog-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
         }
 
-        .display-photo:hover {
-            transform: scale(1.03);
-            border-color: var(--teal-bright);
+        .title-string {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text-primary);
+            margin-top: 4px;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 24px 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: var(--bg-secondary);
+        .date-string {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-variant-numeric: tabular-nums;
         }
 
-        /* Responsive Mobile Layout Adaptations */
-        @media (max-width: 968px) {
-            .showcase-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .info-panel {
-                text-align: center;
-                padding: 24px;
-            }
-
-            .section-tag::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .portrait-frame {
-                order: -1; /* Pushes picture to top on small monitors */
-            }
+        /* Detail container box mimicking sketch details container */
+        .details-container {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            text-align: justify;
         }
 
-        @media (max-width: 480px) {
-            .navbar {
-                flex-wrap: wrap;
-                gap: 10px;
+        /* Responsive Mobile Stack Overrides */
+        @media (max-width: 640px) {
+            .project-row {
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px 0;
             }
-            .nav-link {
-                margin: 0 10px;
-                font-size: 0.9rem;
+
+            .asset-box {
+                flex: 0 0 140px;
+                width: 140px;
+                height: 140px;
+            }
+
+            .title-string {
+                font-size: 1.25rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Sticky Header Navigation -->
+    <!-- Top Sticky Header -->
     <header>
         <nav class="navbar">
-            <a href="https://github.com/DriftLoki" target="_blank" class="nav-link">GitHub</a>
-            <a href="mailto:eugenesotelo441@gmail.com" class="nav-link">Contact</a>
-            <!-- Tip: Once you build your subpages or add a resume, update these names -->
-            <a href="#" class="nav-link">Projects</a>
-            <a href="2026FallResume.pdf" target="_blank" class="nav-link">Resume</a>
+            <a href="index.html" class="nav-logo">Eugenio Sotelo</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="projects.html" class="nav-item active">Projects</a>
+                <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Main Intro Badge -->
-    <section class="hero">
-        <div class="profile-badge">
-            <h1 class="profile-title">Eugenio Sotelo</h1>
+    <!-- Main Content Grid -->
+    <main class="showcase">
+        <h2 class="section-header">Selected Work & Engineering Systems</h2>
+
+        <!-- Project 01 -->
+        <div class="project-row">
+            <div class="asset-box">
+                <img src="mips-cpu.jpg" alt="MIPS CPU" onerror="this.src='https://unsplash.com'">
+            </div>
+            <div class="meta-stack">
+                <div class="meta-header">
+                    <div>
+                        <div class="catalog-tag">My Projects / 01</div>
+                        <h3 class="title-string">32-Bit MIPS Processor</h3>
+                    </div>
+                    <span class="date-string">2025</span>
+                </div>
+                <div class="details-container">
+                    A custom processor architecture built to execute hardware instructions efficiently. Designed and implemented logic maps, verification sequences, and execution safety profiles using systematic digital design pipelines.
+                </div>
+            </div>
         </div>
-    </section>
 
-    <!-- Balanced Three-Column Desktop Block / Stacking Mobile Block -->
-    <section class="main-showcase">
-        <div class="showcase-grid">
-            
-            <!-- Left Info Block -->
-            <div class="info-panel">
-                <h2 class="section-tag">Education</h2>
-                <p class="panel-text">
-                    B.S. Computer Engineering graduate from Florida Polytechnic University. Continuing advanced engineering and hardware system methodologies within the Fall Graduate Cohort.
-                </p>
+        <!-- Project 02 -->
+        <div class="project-row">
+            <div class="asset-box">
+                <img src="rover.jpg" alt="Autonomous Rover" onerror="this.src='https://unsplash.com'">
             </div>
-
-            <!-- Center Visual Asset Frame -->
-            <div class="portrait-frame">
-                <!-- Drop your profile picture file into your repo and name it 'profile.jpg' -->
-                <img src="profile.jpg" alt="Eugenio Sotelo" class="display-photo" onerror="this.src='https://unsplash.com'">
+            <div class="meta-stack">
+                <div class="meta-header">
+                    <div>
+                        <div class="catalog-tag">My Projects / 02</div>
+                        <h3 class="title-string">Autonomous Rover Platform</h3>
+                    </div>
+                    <span class="date-string">2026</span>
+                </div>
+                <div class="details-container">
+                    An open-source terrestrial robotics platform combining custom hardware infrastructure and edge artificial intelligence logic execution. Built as a low-cost framework for real-world environmental interaction.
+                </div>
             </div>
-
-            <!-- Right Info Block -->
-            <div class="info-panel">
-                <h2 class="section-tag">Focus</h2>
-                <p class="panel-text">
-                    Specializing in digital processor design, embedded firmware architectures, autonomous mechatronic deployment, and printed circuit board instrumentation loops.
-                </p>
-            </div>
-
         </div>
-    </section>
 
-    <!-- Footer Segment -->
-    <footer>
-        <p>&copy; 2026 Eugenio Sotelo. Hosted via GitHub Pages.</p>
-    </footer>
+        <!-- Project 03 -->
+        <div class="project-row">
+            <div class="asset-box">
+                <img src="pcb-driver.jpg" alt="Solenoid Driver PCB" onerror="this.src='https://unsplash.com'">
+            </div>
+            <div class="meta-stack">
+                <div class="meta-header">
+                    <div>
+                        <div class="catalog-tag">My Projects / 03</div>
+                        <h3 class="title-string">Solenoid Driver PCB</h3>
+                    </div>
+                    <span class="date-string">2026</span>
+                </div>
+                <div class="details-container">
+                    Custom printed circuit board schematic and routing engineered for mechatronic high-rate-of-fire loop control. Features strict voltage line decoupling topologies built safely for prototype hardware configurations.
+                </div>
+            </div>
+        </div>
+
+    </main>
 
 </body>
 </html>
