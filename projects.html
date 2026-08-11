@@ -123,7 +123,7 @@
             flex-direction: column;
         }
 
-        /* Refined Classification Label - Numbers and slashes successfully removed */
+        /* Classification Label */
         .catalog-tag {
             font-size: 0.8rem;
             font-weight: 600;
@@ -232,13 +232,12 @@
             <div class="project-text-side">
                 <div class="catalog-tag">System</div>
                 <h2 class="title-string">Autonomous Rover Platform</h2>
-                <div class="meta-string">Class Project — April 2026</div>
+                <div class="meta-string">Research Project — Spring 2026</div>
                 <div class="details-container">
-                    Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
+                    Engineered and assembled the low cost, open source GooseBot robotics platform. This project combined 3D printing and custom hardware in addition to custom object detection code that was deployed and tested to allow GooseBot to drive around a test track. Implemented and experimented with basic sign and rubber duck detection using test photos and machine learning allowing the GooseBot to detect up to 3 road signs, 3 road markings, and 2 objects.
                 </div>
             </div>
             <div class="project-photo-side">
-                <!-- Image path refactored to match project name format exactly -->
                 <img src="Autonomous Rover Platform.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
@@ -248,13 +247,12 @@
             <div class="project-text-side">
                 <div class="catalog-tag">Architecture</div>
                 <h2 class="title-string">32-Bit MIPS Processor</h2>
-                <div class="meta-string">Research Project — 2025</div>
+                <div class="meta-string">Class Project — Spring 2025</div>
                 <div class="details-container">
-                    A custom processor architecture built to execute hardware instructions efficiently. Designed and implemented logic maps, verification sequences, and execution safety profiles using systematic digital design pipelines.
+                    Designed and built a full-32 bit CPU that supports 10+ instructions as well as the ability to input data and display outputs via the onboard switches and leds. Intel Quartus Prime and the DE10-Lite were utilized to upload firmware written with the RISC-V architecture. Custom ROMs were uploaded and tested to confirm instructions worked and to demonstrate.
                 </div>
             </div>
             <div class="project-photo-side">
-                <!-- Image path refactored to match project name format exactly -->
                 <img src="32-Bit MIPS Processor.jpg" alt="MIPS CPU Architecture" onerror="this.src='https://unsplash.com'">
             </div>
         </div>
@@ -264,18 +262,10 @@
             <div class="project-text-side">
                 <div class="catalog-tag">Hardware</div>
                 <h2 class="title-string">Solenoid Driver PCB</h2>
-                <div class="meta-string">Personal Project — February 2026</div>
+                <div class="meta-string">Personal Project — Spring 2026</div>
                 <div class="details-container">
-                    Custom printed circuit board schematic and routing engineered for mechatronic high-rate-of-fire loop control. Features strict voltage line decoupling topologies built safely for prototype hardware configurations.
+                    Designed and fabricated a circuit that handles powering and the fast field collapse of a solenoid. An array of P-type and N-type MOSFETs were used in conjunction with Zener Diodes to allow the magnet field to quickly propagate and collapse on the solenoid. A modified half H-bridge design allowed the circuit to properly power the solenoid and drain excess current to the battery reducing heat creating a ‘regenerative braking property’, which produced 25 full actuations per second. A custom PCB was produced using EasyEDA and KiCad to bring the design to life.
                 </div>
             </div>
             <div class="project-photo-side">
-                <!-- Image path refactored to match project name format exactly -->
                 <img src="Solenoid Driver PCB.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
-            </div>
-        </div>
-
-    </main>
-
-</body>
-</html>
