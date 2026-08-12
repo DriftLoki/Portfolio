@@ -159,7 +159,36 @@
             color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
-            text-align: justify;
+            text-align: left; /* Clean, left-aligned layout flow */
+        }
+
+        /* Tool Badges Formatting Container */
+        .tools-section {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .tools-heading {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            margin-right: 4px;
+        }
+
+        .tool-badge {
+            background-color: #1a1a1e;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
 
         /* Right Split: Side-car Showcase Photo Frame */
@@ -207,6 +236,9 @@
         }
     </style>
 </head>
+
+
+
 <body>
 
     <!-- Static Top Header Bar -->
@@ -235,6 +267,15 @@
                 <div class="meta-string">Research Project — Spring 2026</div>
                 <div class="details-container">
                     Engineered and assembled the low cost, open source GooseBot robotics platform. This project combined 3D printing and custom hardware in addition to custom object detection code that was deployed and tested to allow GooseBot to drive around a test track. Implemented and experimented with basic sign and rubber duck detection using test photos and machine learning allowing the GooseBot to detect up to 3 road signs, 3 road markings, and 2 objects.
+                    
+                    <div class="tools-section">
+                        <span class="tools-heading">Tools Used:</span>
+                        <span class="tool-badge">ubuntu</span>
+                        <span class="tool-badge">VIM</span>
+                        <span class="tool-badge">SSH</span>
+                        <span class="tool-badge">vscode</span>
+                        <span class="tool-badge">Roboflow</span>
+                    </div>
                 </div>
             </div>
             <div class="project-photo-side">
@@ -250,6 +291,13 @@
                 <div class="meta-string">Class Project — Spring 2025</div>
                 <div class="details-container">
                     Designed and built a full-32 bit CPU that supports 10+ instructions as well as the ability to input data and display outputs via the onboard switches and leds. Intel Quartus Prime and the DE10-Lite were utilized to upload firmware written with the RISC-V architecture. Custom ROMs were uploaded and tested to confirm instructions worked and to demonstrate.
+                    
+                    <div class="tools-section">
+                        <span class="tools-heading">Tools Used:</span>
+                        <span class="tool-badge">Intel Quartus Prime</span>
+                        <span class="tool-badge">DE10-Lite</span>
+                        <span class="tool-badge">SystemVerilog</span>
+                    </div>
                 </div>
             </div>
             <div class="project-photo-side">
@@ -261,11 +309,51 @@
         <div class="project-row">
             <div class="project-text-side">
                 <div class="catalog-tag">Hardware</div>
-                <h2 class="title-string">Solenoid Driver PCB V1</h2>
+                <h2 class="title-string">Solenoid Driver PCB</h2>
                 <div class="meta-string">Personal Project — Spring 2026</div>
                 <div class="details-container">
                     Designed and fabricated a circuit that handles powering and the fast field collapse of a solenoid. An array of P-type and N-type MOSFETs were used in conjunction with Zener Diodes to allow the magnet field to quickly propagate and collapse on the solenoid. A modified half H-bridge design allowed the circuit to properly power the solenoid and drain excess current to the battery reducing heat creating a ‘regenerative braking property’, which produced 25 full actuations per second. A custom PCB was produced using EasyEDA and KiCad to bring the design to life.
+                    
+                    <div class="tools-section">
+                        <span class="tools-heading">Tools Used:</span>
+                        <span class="tool-badge">LTSpice</span>
+                        <span class="tool-badge">KiCad</span>
+                        <span class="tool-badge">LCSC</span>
+                        <span class="tool-badge">JLCPCB</span>
+                    </div>
                 </div>
             </div>
             <div class="project-photo-side">
-                <img src="Solenoid Driver PCB V1.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
+                <img src="Solenoid Driver PCB.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+
+        <!-- Project 04: Brushless Nerf Blaster Design -->
+        <div class="project-row">
+            <div class="project-text-side">
+                <div class="catalog-tag">System</div>
+                <h2 class="title-string">Brushless Nerf Blaster Design</h2>
+                <div class="meta-string">Personal Project — Winter 2024 to Present</div>
+                <div class="details-container">
+                    Designed and fabricated custom PCBs integrating an RP2042, MOSFET-driven solenoid control, and brushless motor control to produce a high power, competition ready blaster system. This design fires darts at 25 per second at a velocity of 220 feet per second. This project utilized CAD modeling and 3D printing to design and manufacture components to secure electronics and integrate the system fully.
+                    
+                    <div class="tools-section">
+                        <span class="tools-heading">Tools Used:</span>
+                        <span class="tool-badge">Arduino IDE</span>
+                        <span class="tool-badge">KiCad</span>
+                        <span class="tool-badge">LCSC</span>
+                        <span class="tool-badge">JLCPCB</span>
+                        <span class="tool-badge">LTSpice</span>
+                        <span class="tool-badge">PlatformIO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-photo-side">
+                <img src="Brushless Nerf Blaster Design.jpg" alt="Brushless Nerf Blaster Design" onerror="this.src='https://unsplash.com'">
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
+
