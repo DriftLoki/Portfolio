@@ -121,6 +121,7 @@
             padding: 24px;
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
@@ -167,6 +168,7 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             margin-bottom: 4px;
+            transition: color 0.2s ease;
         }
 
         .communication-string {
@@ -221,36 +223,31 @@
 
         <div class="contact-grid">
 
-            <!-- Node 01: Email Endpoint Link -->
-            <a href="mailto:eugenesotelo441@gmail.com" class="contact-card">
+            <!-- Node 01: Email (Copies on click) -->
+            <div class="contact-card" onclick="copyToClipboard('eugenesotelo441@gmail.com', this)">
                 <div class="logo-box">
-                    <!-- Standard Mail Vector Graphic -->
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </div>
                 <div class="contact-details">
                     <span class="method-label">Direct Email</span>
                     <span class="communication-string">eugenesotelo441@gmail.com</span>
                 </div>
-            </a>
+            </div>
 
-            <!-- Node 02: Telephone Endpoint Link -->
-            <!-- Note: Adjust the 'tel:' href code and string display configuration with your actual phone details below -->
-            <a href="tel:+19545889817" class="contact-card">
+            <!-- Node 02: Telephone (Copies on click) -->
+            <div class="contact-card" onclick="copyToClipboard('+1 (954) 588-9817', this)">
                 <div class="logo-box">
-                    <!-- Standard Phone Vector Graphic -->
                     <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 </div>
                 <div class="contact-details">
                     <span class="method-label">Voice / Telemetry</span>
                     <span class="communication-string">+1 (954) 588-9817</span>
                 </div>
-            </a>
+            </div>
 
-            
-            <!-- Note: Insert your custom LinkedIn profile link address directly inside the href axis below -->
+            <!-- Node 03: LinkedIn -->
             <a href="https://www.linkedin.com/in/eugenio-sotelo/" target="_blank" class="contact-card">
                 <div class="logo-box">
-                    <!-- High-Resolution SVG brand logo vector asset -->
                     <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                 </div>
                 <div class="contact-details">
@@ -259,10 +256,9 @@
                 </div>
             </a>
 
-            <!-- Node 04: GitHub Repository Target Link -->
+            <!-- Node 04: GitHub -->
             <a href="https://github.com/DriftLoki" target="_blank" class="contact-card">
                 <div class="logo-box">
-                    
                     <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.75.4-1.25.72-1.53-2.21-.25-4.55-1.1-4.55-4.93 0-1.08.4-1.98 1.03-2.67-.1-.26-.45-1.27.1-2.64 0 0 .83-.27 2.74 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.74-1.02 2.74-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.6 1.03 2.67 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                 </div>
                 <div class="contact-details">
@@ -274,8 +270,57 @@
         </div>
     </main>
 
+    <script>
+    function copyToClipboard(text, cardElement) {
+        function showFeedback() {
+            const label = cardElement.querySelector('.method-label');
+            const originalText = label.innerText;
+
+            label.innerText = 'COPIED TO CLIPBOARD!';
+            label.style.color = 'var(--accent)';
+
+            setTimeout(() => {
+                label.innerText = originalText;
+                label.style.color = 'var(--text-secondary)';
+            }, 2000);
+        }
+
+        // 1. Try modern Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text)
+                .then(showFeedback)
+                .catch(() => fallbackCopy(text, showFeedback));
+        } else {
+            // 2. Fallback for restricted iframe or HTTP environments
+            fallbackCopy(text, showFeedback);
+        }
+    }
+
+    function fallbackCopy(text, onSuccess) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        // Prevent screen shift or visibility
+        textarea.style.position = 'fixed';
+        textarea.style.top = '-9999px';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        
+        textarea.focus();
+        textarea.select();
+
+        try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+                onSuccess();
+            } else {
+                prompt("Copy manually:", text);
+            }
+        } catch (err) {
+            prompt("Copy manually:", text);
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+</script>
 </body>
 </html>
-
-
-  
