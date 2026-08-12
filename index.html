@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eugenio Sotelo | Projects</title>
+    <title>Eugenio Sotelo | Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <style>
         /* Modern Minimalist High-Contrast Palette */
         :root {
@@ -47,7 +49,7 @@
             padding: 24px 60px;
         }
 
-        /* Top-Left Header Name - Identical across all pages linking to home */
+        /* Top-Left Linked Header Logo Name */
         .nav-logo {
             font-size: 2.2rem; 
             font-weight: 700;
@@ -80,58 +82,91 @@
             color: var(--accent);
         }
 
-        /* Projects Main Alignment Container */
-        .showcase-wrapper {
+        /* Master Viewport Wrapper */
+        .layout-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Main Split Column Layout Container */
+        .homepage-layout {
             width: 100%;
             max-width: 100%;
-            padding: 60px 60px;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        /* [LEFT SIDE] Profile Photo Container Column */
+        .photo-column {
+            flex: 0 0 400px; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Centered Sample Text Element above the profile photo */
+        .photo-sidebar-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        .photo-box {
+            width: 100%;
+            height: 520px; 
+            background-color: #121214;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%);
+        }
+
+        /* [RIGHT SIDE] Master Content Showcase Column */
+        .content-column {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 60px; 
+            justify-content: flex-start;
+            padding-top: 44px; 
         }
 
-        .page-title {
+        .section-label {
             font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             color: var(--accent);
             text-transform: uppercase;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
-        /* Project Entry Block Structure */
-        .project-block {
+        /* Project Split Layout Component - Standard layout flow restores image to the right */
+        .project-display-split {
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 60px;
-        }
-
-        .project-block:last-child {
-            border-bottom: none; 
+            gap: 30px;
+            width: 100%;
+            align-items: flex-start;
         }
 
         .project-text-side {
-            width: 100%;
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
 
-        /* Classification Label */
-        .catalog-tag {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .title-string {
+        .project-title {
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
@@ -140,7 +175,7 @@
             margin-bottom: 6px;
         }
 
-        .meta-string {
+        .project-meta-line {
             font-size: 0.95rem;
             color: var(--text-secondary);
             font-weight: 500;
@@ -149,7 +184,7 @@
             letter-spacing: 0.05em;
         }
 
-        .details-container {
+        .detail-block {
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -157,82 +192,71 @@
             color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
-            text-align: left;
+            text-align: justify;
         }
 
-        /* Tool Badges Formatting Container */
-        .tools-section {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .tools-heading {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
-            margin-right: 4px;
-        }
-
-        .tool-badge {
-            background-color: #1a1a1e;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
-
-        /* Dual Photo Row Structure */
-        .project-gallery-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            width: 100%;
-        }
-
-        .project-photo-frame {
-            height: 520px;
+        /* Side-car Project Thumbnail Photo Frame - Placed securely on the right side */
+        .project-photo-side {
+            flex: 0 0 280px; 
+            height: 280px;
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
+            margin-top: 54px; 
         }
 
-        .project-photo-frame img {
+        .project-photo-side img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Mobile View Compatibility Overrides */
-        @media (max-width: 768px) {
-            .project-gallery-row {
-                grid-template-columns: 1fr;
-                gap: 16px;
+        /* Responsive Mobile Layout Adaptations */
+        @media (max-width: 1024px) {
+            .project-display-split {
+                flex-direction: column;
+                gap: 30px;
             }
-            .project-photo-frame {
-                height: 360px; /* Increased height from 240px for mobile */
+            .project-photo-side {
+                margin-top: 0;
+                width: 100%;
+                max-width: 320px;
+                height: 240px;
             }
+        }
+
+        @media (max-width: 900px) {
             .navbar {
                 flex-direction: column;
                 gap: 16px;
                 padding: 18px 20px;
                 text-align: center;
             }
-            .showcase-wrapper {
-                padding: 40px 20px;
+
+            .homepage-layout {
+                flex-direction: column;
+                gap: 40px;
+                padding: 20px;
+            }
+
+            .photo-column {
+                flex: 1;
+                width: 100%;
+                max-width: 340px;
+                margin: 0 auto;
+            }
+
+            .content-column {
+                padding-top: 0;
+            }
+
+            .photo-box {
+                height: 400px;
             }
         }
     </style>
 </head>
-
 <body>
 
     <!-- Static Top Header Bar -->
@@ -244,132 +268,47 @@
                 <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
                 <a href="contact.html" class="nav-item">Contact</a>
                 <a href="https://github.com/DriftLoki" target="_blank" class="nav-item">GitHub</a>
-                <a href="projects.html" class="nav-item active">Projects</a>
+                <a href="projects.html" class="nav-item">Projects</a>
             </div>
         </nav>
     </header>
 
-    <!-- Main Dynamic Listing Grid -->
-    <main class="showcase-wrapper">
-        <h1 class="page-title">Technical Inventory</h1>
+    <!-- Main Content Alignment Area -->
+    <div class="layout-wrapper">
+        <main class="homepage-layout">
+            
+            <!-- Left Column: Profile Picture Frame -->
+            <div class="photo-column">
+                <div class="photo-sidebar-text">Wow, thats me!</div>
+                <div class="photo-box">
+                    <img src="profile.jpg" alt="Eugenio Sotelo" onerror="this.src='https://unsplash.com'">
+                </div>
+            </div>
 
-        <!-- Project 01: Autonomous Rover Platform -->
-        <div class="project-block">
-            <div class="project-text-side">
-                <div class="catalog-tag">System</div>
-                <h2 class="title-string">Autonomous Rover Platform</h2>
-                <div class="meta-string">Research Project — Spring 2026</div>
-                <div class="details-container">
-                    Engineered and assembled the low cost, open source GooseBot robotics platform. This project combined 3D printing and custom hardware in addition to custom object detection code that was deployed and tested to allow GooseBot to drive around a test track. Implemented and experimented with basic sign and rubber duck detection using test photos and machine learning allowing the GooseBot to detect up to 3 road signs, 3 road markings, and 2 objects.
+            <!-- Right Column: Project Showcase Splitting Panel -->
+            <div class="content-column">
+                <div class="section-label">Recent Project Showcase</div>
+                <div class="project-display-split">
                     
-                    <div class="tools-section">
-                        <span class="tools-heading">Tools Used:</span>
-                        <span class="tool-badge">ubuntu</span>
-                        <span class="tool-badge">VIM</span>
-                        <span class="tool-badge">SSH</span>
-                        <span class="tool-badge">vscode</span>
-                        <span class="tool-badge">Roboflow</span>
-                        <span class="tool-badge">Python</span>
+                    <!-- Text side within the right layout pane -->
+                    <div class="project-text-side">
+                        <h2 class="project-title">Autonomous Rover Platform</h2>
+                        <div class="project-meta-line">Class Project — April 2026</div>
+                        <div class="detail-block">
+                            Engineered and assembled the low cost, open source GooseBot robotics platform. This project combined 3D printing and custom hardware in addition to custom object detection code that was deployed and tested to allow GooseBot to drive around a test track. Implemented and experimented with basic sign and rubber duck detection using test photos and machine learning allowing the GooseBot to detect up to 3 road signs, 3 road markings, and 2 objects.
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="project-gallery-row">
-                <div class="project-photo-frame">
-                    <img src="Autonomous Rover Platform 1 .jpg" alt="Autonomous Rover Detail 1" onerror="this.src='https://unsplash.com'">
-                </div>
-                <div class="project-photo-frame">
-                    <img src="Autonomous Rover Platform 2.jpg" alt="Autonomous Rover Detail 2" onerror="this.src='https://unsplash.com'">
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 02: 32-Bit MIPS Processor -->
-        <div class="project-block">
-            <div class="project-text-side">
-                <div class="catalog-tag">Architecture</div>
-                <h2 class="title-string">32-Bit MIPS Processor</h2>
-                <div class="meta-string">Class Project — Spring 2025</div>
-                <div class="details-container">
-                    Designed and built a full-32 bit CPU that supports 10+ instructions as well as the ability to input data and display outputs via the onboard switches and leds. Intel Quartus Prime and the DE10-Lite were utilized to upload firmware written with the RISC-V architecture. Custom ROMs were uploaded and tested to confirm instructions worked and to demonstrate.
-                    
-                    <div class="tools-section">
-                        <span class="tools-heading">Tools Used:</span>
-                        <span class="tool-badge">Intel Quartus Prime</span>
-                        <span class="tool-badge">DE10-Lite</span>
-                        <span class="tool-badge">Verilog</span>
-                        <span class="tool-badge">SystemVerilog</span>
+                    <!-- Project Image Frame side-car - Positioned on the right side of text -->
+                    <div class="project-photo-side">
+                        <img src="Autonomous Rover Platform 1 .jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
                     </div>
-                </div>
-            </div>
-            <div class="project-gallery-row">
-                <div class="project-photo-frame">
-                    <img src="32-Bit MIPS Processor 1.jpg" alt="MIPS CPU Architecture Layout" onerror="this.src='https://unsplash.com'">
-                </div>
-                <div class="project-photo-frame">
-                    <img src="32-Bit MIPS Processor 2.jpg" alt="MIPS CPU Hardware Verification" onerror="this.src='https://unsplash.com'">
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 03: Solenoid Driver PCB -->
-        <div class="project-block">
-            <div class="project-text-side">
-                <div class="catalog-tag">Hardware</div>
-                <h2 class="title-string">Solenoid Driver PCB</h2>
-                <div class="meta-string">Personal Project — Spring 2026</div>
-                <div class="details-container">
-                    Designed and fabricated a circuit that handles powering and the fast field collapse of a solenoid. An array of P-type and N-type MOSFETs were used in conjunction with Zener Diodes to allow the magnet field to quickly propagate and collapse on the solenoid. A modified half H-bridge design allowed the circuit to properly power the solenoid and drain excess current to the battery reducing heat creating a ‘regenerative braking property’, which produced 25 full actuations per second. A custom PCB was produced using EasyEDA and KiCad to bring the design to life.
-                    
-                    <div class="tools-section">
-                        <span class="tools-heading">Tools Used:</span>
-                        <span class="tool-badge">LTSpice</span>
-                        <span class="tool-badge">KiCad</span>
-                        <span class="tool-badge">LCSC</span>
-                        <span class="tool-badge">JLCPCB</span>
-                    </div>
                 </div>
             </div>
-            <div class="project-gallery-row">
-                <div class="project-photo-frame">
-                    <img src="Solenoid Driver PCB V1 1.jpg" alt="Solenoid Driver Circuit Layout" onerror="this.src='https://unsplash.com'">
-                </div>
-                <div class="project-photo-frame">
-                    <img src="Solenoid Driver PCB V1 2.png" alt="Solenoid Driver Render" onerror="this.src='https://unsplash.com'">
-                </div>
-            </div>
-        </div>
 
-        <!-- Project 04: Brushless Nerf Blaster Design -->
-        <div class="project-block">
-            <div class="project-text-side">
-                <div class="catalog-tag">System</div>
-                <h2 class="title-string">Brushless Nerf Blaster Design</h2>
-                <div class="meta-string">Personal Project — Winter 2024 to Present</div>
-                <div class="details-container">
-                    Designed and fabricated custom PCBs integrating an RP2040, MOSFET-driven solenoid control, and brushless motor control to produce a high power, competition ready blaster system. This design fires darts at 25 per second at a velocity of 220 feet per second. This project utilized CAD modeling and 3D printing to design and manufacture components to secure electronics and integrate the system fully.
-                    
-                    <div class="tools-section">
-                        <span class="tools-heading">Tools Used:</span>
-                        <span class="tool-badge">Arduino IDE</span>
-                        <span class="tool-badge">C/C++</span>
-                        <span class="tool-badge">KiCad</span>
-                        <span class="tool-badge">LCSC</span>
-                        <span class="tool-badge">JLCPCB</span>
-                        <span class="tool-badge">LTSpice</span>
-                        <span class="tool-badge">PlatformIO</span>
-                    </div>
-                </div>
-            </div>
-            <div class="project-gallery-row">
-                <div class="project-photo-frame">
-                    <img src="Brushless Nerf Blaster Design 1.jpg" alt="Brushless Blaster CAD Assembly" onerror="this.src='https://unsplash.com'">
-                </div>
-                <div class="project-photo-frame">
-                    <img src="Brushless Nerf Blaster Design 2.png" alt="Brushless Blaster Custom PCB" onerror="this.src='https://unsplash.com'">
-                </div>
-            </div>
-        </div>
+        </main>
+    </div>
 
-    </main>
 </body>
 </html>
