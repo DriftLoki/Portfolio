@@ -102,23 +102,21 @@
             margin-bottom: 20px;
         }
 
-        /* Project Entry Row Structure mirroring Home style */
-        .project-row {
+        /* Project Entry Block Structure */
+        .project-block {
             display: flex;
-            justify-content: space-between;
-            gap: 60px;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 24px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 60px;
         }
 
-        .project-row:last-child {
+        .project-block:last-child {
             border-bottom: none; 
         }
 
-        /* Left Split: Details & Code Block Context */
         .project-text-side {
-            flex: 1;
+            width: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -159,7 +157,7 @@
             color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
-            text-align: left; /* Clean, left-aligned layout flow */
+            text-align: left;
         }
 
         /* Tool Badges Formatting Container */
@@ -191,39 +189,37 @@
             letter-spacing: 0.02em;
         }
 
-        /* Right Split: Side-car Showcase Photo Frame */
-        .project-photo-side {
-            flex: 0 0 280px; 
-            height: 280px;
+        /* Dual Photo Row Structure */
+        .project-gallery-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            width: 100%;
+        }
+
+        .project-photo-frame {
+            height: 340px;
             background-color: #121214;
             border: 1px solid var(--border-color);
             border-radius: 6px;
             overflow: hidden;
-            margin-top: 54px; 
         }
 
-        .project-photo-side img {
+        .project-photo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
         /* Mobile View Compatibility Overrides */
-        @media (max-width: 1024px) {
-            .project-row {
-                flex-direction: column;
-                gap: 30px;
-                padding-bottom: 40px;
+        @media (max-width: 768px) {
+            .project-gallery-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
-            .project-photo-side {
-                margin-top: 0;
-                width: 100%;
-                max-width: 320px;
+            .project-photo-frame {
                 height: 240px;
             }
-        }
-
-        @media (max-width: 900px) {
             .navbar {
                 flex-direction: column;
                 gap: 16px;
@@ -236,8 +232,6 @@
         }
     </style>
 </head>
-
-
 
 <body>
 
@@ -260,7 +254,7 @@
         <h1 class="page-title">Technical Inventory</h1>
 
         <!-- Project 01: Autonomous Rover Platform -->
-        <div class="project-row">
+        <div class="project-block">
             <div class="project-text-side">
                 <div class="catalog-tag">System</div>
                 <h2 class="title-string">Autonomous Rover Platform</h2>
@@ -278,13 +272,18 @@
                     </div>
                 </div>
             </div>
-            <div class="project-photo-side">
-                <img src="Autonomous Rover Platform.jpg" alt="Autonomous Rover Hardware" onerror="this.src='https://unsplash.com'">
+            <div class="project-gallery-row">
+                <div class="project-photo-frame">
+                    <img src="Autonomous Rover Platform 1.jpg" alt="Autonomous Rover Detail 1" onerror="this.src='https://unsplash.com'">
+                </div>
+                <div class="project-photo-frame">
+                    <img src="Autonomous Rover Platform 2.jpg" alt="Autonomous Rover Detail 2" onerror="this.src='https://unsplash.com'">
+                </div>
             </div>
         </div>
 
         <!-- Project 02: 32-Bit MIPS Processor -->
-        <div class="project-row">
+        <div class="project-block">
             <div class="project-text-side">
                 <div class="catalog-tag">Architecture</div>
                 <h2 class="title-string">32-Bit MIPS Processor</h2>
@@ -300,16 +299,21 @@
                     </div>
                 </div>
             </div>
-            <div class="project-photo-side">
-                <img src="32-Bit MIPS Processor.jpg" alt="MIPS CPU Architecture" onerror="this.src='https://unsplash.com'">
+            <div class="project-gallery-row">
+                <div class="project-photo-frame">
+                    <img src="32-Bit MIPS Processor 1.jpg" alt="MIPS CPU Architecture Layout" onerror="this.src='https://unsplash.com'">
+                </div>
+                <div class="project-photo-frame">
+                    <img src="32-Bit MIPS Processor 2.jpg" alt="MIPS CPU Hardware Verification" onerror="this.src='https://unsplash.com'">
+                </div>
             </div>
         </div>
 
         <!-- Project 03: Solenoid Driver PCB -->
-        <div class="project-row">
+        <div class="project-block">
             <div class="project-text-side">
                 <div class="catalog-tag">Hardware</div>
-                <h2 class="title-string">Solenoid Driver PCB V1</h2>
+                <h2 class="title-string">Solenoid Driver PCB</h2>
                 <div class="meta-string">Personal Project — Spring 2026</div>
                 <div class="details-container">
                     Designed and fabricated a circuit that handles powering and the fast field collapse of a solenoid. An array of P-type and N-type MOSFETs were used in conjunction with Zener Diodes to allow the magnet field to quickly propagate and collapse on the solenoid. A modified half H-bridge design allowed the circuit to properly power the solenoid and drain excess current to the battery reducing heat creating a ‘regenerative braking property’, which produced 25 full actuations per second. A custom PCB was produced using EasyEDA and KiCad to bring the design to life.
@@ -323,13 +327,18 @@
                     </div>
                 </div>
             </div>
-            <div class="project-photo-side">
-                <img src="Solenoid Driver PCB V1.jpg" alt="Solenoid Driver PCB Layout" onerror="this.src='https://unsplash.com'">
+            <div class="project-gallery-row">
+                <div class="project-photo-frame">
+                    <img src="Solenoid Driver PCB V1 1.jpg" alt="Solenoid Driver Circuit Layout" onerror="this.src='https://unsplash.com'">
+                </div>
+                <div class="project-photo-frame">
+                    <img src="Solenoid Driver PCB V1 2.jpg" alt="Solenoid Driver Oscilloscope Readout" onerror="this.src='https://unsplash.com'">
+                </div>
             </div>
         </div>
 
         <!-- Project 04: Brushless Nerf Blaster Design -->
-        <div class="project-row">
+        <div class="project-block">
             <div class="project-text-side">
                 <div class="catalog-tag">System</div>
                 <h2 class="title-string">Brushless Nerf Blaster Design</h2>
@@ -348,8 +357,13 @@
                     </div>
                 </div>
             </div>
-            <div class="project-photo-side">
-                <img src="Brushless Nerf Blaster Design.jpg" alt="Brushless Nerf Blaster Design" onerror="this.src='https://unsplash.com'">
+            <div class="project-gallery-row">
+                <div class="project-photo-frame">
+                    <img src="Brushless Nerf Blaster Design 1.jpg" alt="Brushless Blaster CAD Assembly" onerror="this.src='https://unsplash.com'">
+                </div>
+                <div class="project-photo-frame">
+                    <img src="Brushless Nerf Blaster Design 2.jpg" alt="Brushless Blaster Custom PCB" onerror="this.src='https://unsplash.com'">
+                </div>
             </div>
         </div>
 
