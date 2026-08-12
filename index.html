@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eugenio Sotelo | Portfolio</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-
     <style>
         /* Modern Minimalist High-Contrast Palette */
         :root {
@@ -108,30 +106,70 @@
             flex-direction: column;
         }
 
-        /* Centered Sample Text Element above the profile photo */
+        /* Centered Subtitle Element above the profile photo */
         .photo-sidebar-text {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-align: center;
             margin-bottom: 16px;
             letter-spacing: 0.02em;
         }
 
+        /* Animated Profile Photo Box Frame Chassis */
         .photo-box {
             width: 100%;
             height: 520px; 
             background-color: #121214;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
         }
 
+        /* The Spinning Fading Neon Accent Laser Layer */
+        .photo-box::before {
+            content: '';
+            position: absolute;
+            top: -25%; 
+            left: -25%;
+            width: 150%;  
+            height: 150%;
+            background: conic-gradient(
+                from 0deg,
+                var(--accent) 0%,
+                rgba(196, 252, 4, 0.5) 15%,
+                rgba(196, 252, 4, 0.1) 35%,
+                transparent 60%
+            );
+            transform-origin: center center;
+            animation: spinBorder 4s linear infinite;
+            z-index: 1;
+        }
+
+        /* Inner Content Plate Mask leaving a thin line margin */
+        .photo-box::after {
+            content: '';
+            position: absolute;
+            inset: 3px; 
+            background-color: #121214;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        /* Profile Image Constraints */
         .photo-box img {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            inset: 3px; 
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
             object-fit: cover;
             filter: grayscale(10%);
+            border-radius: 6px;
+            z-index: 3; 
         }
 
         /* [RIGHT SIDE] Master Content Showcase Column */
@@ -149,10 +187,35 @@
             letter-spacing: 0.15em;
             color: var(--accent);
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
         }
 
-        /* Project Split Layout Component - Standard layout flow restores image to the right */
+        /* New Minimalist Quick-Status Metadata Panel (Inspired by davidizambrano.site) */
+        .status-metadata-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            row-gap: 16px;
+            column-gap: 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 30px;
+        }
+
+        .metadata-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+        }
+
+        .metadata-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* Project Split Layout Component */
         .project-display-split {
             display: flex;
             gap: 30px;
@@ -192,10 +255,10 @@
             color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.7;
-            text-align: justify;
+            text-align: left;
         }
 
-        /* Side-car Project Thumbnail Photo Frame - Placed securely on the right side */
+        /* Side-car Project Thumbnail Photo Frame */
         .project-photo-side {
             flex: 0 0 280px; 
             height: 280px;
@@ -210,6 +273,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* Rotation Keyframes Engine */
+        @keyframes spinBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive Mobile Layout Adaptations */
@@ -240,6 +309,11 @@
                 padding: 20px;
             }
 
+            .status-metadata-grid {
+                grid-template-columns: 1fr;
+                row-gap: 8px;
+            }
+
             .photo-column {
                 flex: 1;
                 width: 100%;
@@ -257,6 +331,9 @@
         }
     </style>
 </head>
+
+
+
 <body>
 
     <!-- Static Top Header Bar -->
@@ -267,7 +344,7 @@
             <div class="nav-links-group">
                 <a href="2026FallResume.pdf" target="_blank" class="nav-item">Resume</a>
                 <a href="contact.html" class="nav-item">Contact</a>
-                <a href="https://github.com/DriftLoki" target="_blank" class="nav-item">GitHub</a>
+                <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
                 <a href="projects.html" class="nav-item">Projects</a>
             </div>
         </nav>
@@ -279,14 +356,31 @@
             
             <!-- Left Column: Profile Picture Frame -->
             <div class="photo-column">
-                <div class="photo-sidebar-text">Wow, thats me!</div>
+                <div class="photo-sidebar-text">Computer Engineering Student</div>
                 <div class="photo-box">
                     <img src="profile.jpg" alt="Eugenio Sotelo" onerror="this.src='https://unsplash.com'">
                 </div>
             </div>
 
-            <!-- Right Column: Project Showcase Splitting Panel -->
+            <!-- Right Column: Personal Status Info & Recent Project Showcase -->
             <div class="content-column">
+                <div class="section-label">Overview & Core Alignment</div>
+                
+                <!-- Brand New Quick Status Grid Area -->
+                <div class="status-metadata-grid">
+                    <div class="metadata-label">Education</div>
+                    <div class="metadata-value">B.S. Computer Engineering — Florida Polytechnic University</div>
+                    
+                    <div class="metadata-label">Currently</div>
+                    <div class="metadata-value">Advanced Engineering Core (Fall Graduate Cohort)</div>
+                    
+                    <div class="metadata-label">Research Focus</div>
+                    <div class="metadata-value">Embedded Hardware Architecture & Microcontroller Instrumentation Arrays</div>
+                    
+                    <div class="metadata-label">Status</div>
+                    <div class="metadata-value">Open to Research & Hardware Engineering Roles</div>
+                </div>
+
                 <div class="section-label">Recent Project Showcase</div>
                 <div class="project-display-split">
                     
@@ -295,7 +389,7 @@
                         <h2 class="project-title">Autonomous Rover Platform</h2>
                         <div class="project-meta-line">Class Project — April 2026</div>
                         <div class="detail-block">
-                            Engineered and assembled the low cost, open source GooseBot robotics platform. This project combined 3D printing and custom hardware in addition to custom object detection code that was deployed and tested to allow GooseBot to drive around a test track. Implemented and experimented with basic sign and rubber duck detection using test photos and machine learning allowing the GooseBot to detect up to 3 road signs, 3 road markings, and 2 objects.
+                            Engineered a low-cost, open-source terrestrial robotics platform combining custom hardware infrastructure, instrumentation arrays, and edge artificial intelligence logic execution. Designed for seamless execution handling and hardware troubleshooting.
                         </div>
                     </div>
 
