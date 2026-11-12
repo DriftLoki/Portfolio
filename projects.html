@@ -4,83 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eugenio Sotelo | Projects</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Modern Minimalist High-Contrast Palette */
-        :root {
-            --bg: #0b0b0c;
-            --text-primary: #ffffff;
-            --text-secondary: #88888b;
-            --border-color: #222224;
-            --accent: #c4fc04;
-            --font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-primary);
-            font-family: var(--font-stack);
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Static Global Top Navigation Bar */
-        header {
-            width: 100%;
-            background-color: var(--bg);
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .navbar {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            padding: 24px 60px;
-        }
-
-        /* Top-Left Header Name - Identical across all pages linking to home */
-        .nav-logo {
-            font-size: 2.2rem; 
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .nav-logo:hover {
-            color: var(--accent);
-        }
-
-        .nav-links-group {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-item {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            color: var(--accent);
-        }
-
         /* Projects Main Alignment Container */
         .showcase-wrapper {
             width: 100%;
@@ -161,6 +87,197 @@
             text-align: left;
         }
 
+        .learn-more {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 16px;
+            padding: 10px 16px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .learn-more:hover,
+        .learn-more:focus-visible {
+            background-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .project-block.solenoid-mkii-project {
+            width: 100%;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 24px;
+        }
+
+        .project-block.solenoid-mki-project {
+            display: block;
+            position: relative;
+            width: 88%;
+            margin-left: 12%;
+            padding: 0;
+            background-color: #101012;
+            border: 1px solid var(--border-color);
+            border-left: 2px solid var(--text-secondary);
+            border-radius: 6px;
+        }
+
+        .project-block.solenoid-mki-project[open] {
+            display: flex;
+            flex-direction: column;
+            width: 88%;
+            margin-left: 12%;
+            gap: 24px;
+            padding: 24px;
+        }
+
+        .solenoid-mki-summary {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            list-style: none;
+            padding: 20px 52px 20px 24px;
+        }
+
+        .solenoid-mki-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .solenoid-mki-summary::after {
+            content: '+';
+            position: absolute;
+            top: 50%;
+            right: 24px;
+            color: var(--accent);
+            font-size: 1.6rem;
+            line-height: 1;
+            transform: translateY(-50%);
+        }
+
+        .solenoid-mki-project[open] .solenoid-mki-summary {
+            padding: 0 0 8px;
+        }
+
+        .solenoid-mki-project[open] .solenoid-mki-summary::after {
+            content: '−';
+            top: 12px;
+            right: 0;
+            transform: none;
+        }
+
+        .solenoid-mki-project:not([open]) .solenoid-mki-summary .title-string {
+            margin-bottom: 0;
+        }
+
+        .solenoid-mki-project:not([open]) .solenoid-mki-summary .meta-string {
+            margin-bottom: 0;
+        }
+
+        .solenoid-mki-project[open] .solenoid-mki-gallery {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: none;
+        }
+
+        .solenoid-mki-summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .project-block.solenoid-mki-project::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            right: 100%;
+            width: 32px;
+            border-top: 1px solid var(--text-secondary);
+        }
+
+        .revision-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .solenoid-mkii-gallery {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .solenoid-mkii-gallery .project-photo-frame {
+            height: auto;
+            aspect-ratio: auto;
+        }
+
+        .solenoid-mkii-gallery .solenoid-mkii-gif-frame {
+            aspect-ratio: 16 / 9;
+        }
+
+        .solenoid-mkii-gallery .solenoid-mkii-gif-frame img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .solenoid-mkii-gallery .project-photo-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .solenoid-mkii-gallery .solenoid-mkii-render-frame {
+            aspect-ratio: 1.5;
+        }
+
+        .solenoid-mkii-gallery .solenoid-mkii-render-frame img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .solenoid-mki-gallery {
+            grid-template-columns: 1fr;
+            width: 100%;
+            justify-self: center;
+        }
+
+        .solenoid-mki-gallery .project-photo-frame {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .solenoid-mki-gallery .project-photo-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .solenoid-mki-gallery .solenoid-mki-render-frame {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1.55;
+        }
+
+        .solenoid-mki-gallery .solenoid-mki-render-frame img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
         /* Tool Badges Formatting Container */
         .tools-section {
             margin-top: 20px;
@@ -230,6 +347,29 @@
             .showcase-wrapper {
                 padding: 40px 20px;
             }
+            .project-block.solenoid-mkii-project {
+                padding: 18px;
+            }
+            .project-block.solenoid-mki-project {
+                grid-template-columns: 1fr;
+                width: calc(100% - 20px);
+                margin-left: 20px;
+                padding: 0;
+            }
+            .project-block.solenoid-mki-project[open] {
+                width: calc(100% - 20px);
+                margin-left: 20px;
+                padding: 18px;
+            }
+            .solenoid-mki-project[open] .solenoid-mki-summary {
+                padding-right: 32px;
+            }
+            .solenoid-mki-project[open] .solenoid-mki-summary::after {
+                right: 0;
+            }
+            .project-block.solenoid-mki-project::before {
+                width: 20px;
+            }
         }
     </style>
 </head>
@@ -272,6 +412,7 @@
                         <span class="tool-badge">Roboflow</span>
                         <span class="tool-badge">Python</span>
                     </div>
+                    <a class="learn-more" href="https://github.com/DriftLoki/Goose-Bot" target="_blank" rel="noopener noreferrer">Learn more</a>
                 </div>
             </div>
             <div class="project-gallery-row">
@@ -300,6 +441,7 @@
                         <span class="tool-badge">Verilog</span>
                         <span class="tool-badge">SystemVerilog</span>
                     </div>
+                    <a class="learn-more" href="https://github.com/DriftLoki/RV32I-Processor" target="_blank" rel="noopener noreferrer">Learn more</a>
                 </div>
             </div>
             <div class="project-gallery-row">
@@ -312,15 +454,37 @@
             </div>
         </div>
 
-        <!-- Project 03: Solenoid Driver PCB -->
-        <div class="project-block">
+        <!-- Project 03: Solenoid Driver PCB Mk.II -->
+        <div class="project-block solenoid-mkii-project">
             <div class="project-text-side">
-                <div class="catalog-tag">Hardware</div>
-                <h2 class="title-string">Solenoid Driver PCB</h2>
-                <div class="meta-string">Personal Project — Spring 2026</div>
+                <span class="revision-label">Latest Revision</span>
+                <h2 class="title-string">Solenoid Driver PCB — Mk.II</h2>
+                <div class="meta-string">Personal Project — Fall 2026</div>
+                <div class="details-container">
+                    Mk.II builds on the Mk.I solenoid drive design with a revised PCB focused on handling higher power more effectively. The updated board improves heat dissipation, uses higher-current traces, supports 6S battery packs, and features improved connection points.
+                </div>
+            </div>
+            <div class="project-gallery-row solenoid-mkii-gallery">
+                <div class="project-photo-frame solenoid-mkii-gif-frame">
+                    <img src="Solenoid Driver Mk.II.gif" alt="Animated render of the Solenoid Driver PCB Mk.II">
+                </div>
+                <div class="project-photo-frame solenoid-mkii-render-frame">
+                    <img src="Solenoid Driver Mk.II.png" alt="Solenoid Driver PCB Mk.II render">
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 04: Solenoid Driver PCB Mk.I -->
+        <details class="project-block solenoid-mki-project" open>
+            <summary class="solenoid-mki-summary">
+                <span class="catalog-tag">Previous Version</span>
+                <span class="title-string">Solenoid Driver PCB — Mk.I</span>
+                <span class="meta-string">Personal Project — Spring 2026</span>
+            </summary>
+            <div class="project-text-side">
                 <div class="details-container">
                     Designed and fabricated a circuit that handles powering and the fast field collapse of a solenoid. An array of P-type and N-type MOSFETs were used in conjunction with Zener Diodes to allow the magnet field to quickly propagate and collapse on the solenoid. A modified half H-bridge design allowed the circuit to properly power the solenoid and drain excess current to the battery reducing heat creating a ‘regenerative braking property’, which produced 25 full actuations per second. A custom PCB was produced using EasyEDA and KiCad to bring the design to life.
-                    
+
                     <div class="tools-section">
                         <span class="tools-heading">Tools Used:</span>
                         <span class="tool-badge">LTSpice</span>
@@ -330,15 +494,15 @@
                     </div>
                 </div>
             </div>
-            <div class="project-gallery-row">
+            <div class="project-gallery-row solenoid-mki-gallery">
                 <div class="project-photo-frame">
-                    <img src="Solenoid Driver PCB V1 1.jpg" alt="Solenoid Driver Circuit Layout" onerror="this.src='https://unsplash.com'">
+                    <img src="Solenoid Driver PCB V1 1.jpg" alt="Solenoid Driver PCB Mk.I circuit layout">
                 </div>
-                <div class="project-photo-frame">
-                    <img src="Solenoid Driver PCB V1 2.png" alt="Solenoid Driver Render" onerror="this.src='https://unsplash.com'">
+                <div class="project-photo-frame solenoid-mki-render-frame">
+                    <img src="Solenoid Driver PCB V1 2.png" alt="Solenoid Driver PCB Mk.I render">
                 </div>
             </div>
-        </div>
+        </details>
 
         <!-- Project 04: Brushless Nerf Blaster Design -->
         <div class="project-block">
@@ -359,6 +523,7 @@
                         <span class="tool-badge">LTSpice</span>
                         <span class="tool-badge">PlatformIO</span>
                     </div>
+                    <a class="learn-more" href="https://github.com/DavidZambrano28/WarthogBlaster" target="_blank" rel="noopener noreferrer">Learn more</a>
                 </div>
             </div>
             <div class="project-gallery-row">
