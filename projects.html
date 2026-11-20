@@ -182,7 +182,7 @@
 
         .solenoid-mki-project[open] .solenoid-mki-gallery {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            max-width: none;
+            max-width: 1050px;
         }
 
         .solenoid-mki-summary:focus-visible {
@@ -211,7 +211,7 @@
 
         .solenoid-mkii-gallery {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            max-width: 900px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
@@ -221,18 +221,23 @@
         }
 
         .solenoid-mkii-gallery .solenoid-mkii-gif-frame {
-            aspect-ratio: 16 / 9;
-        }
-
-        .solenoid-mkii-gallery .solenoid-mkii-gif-frame img {
-            height: 100%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1.5;
         }
 
         .solenoid-mkii-gallery .project-photo-frame img {
             display: block;
             width: 100%;
             height: auto;
+            object-fit: contain;
+        }
+
+        .solenoid-mkii-gallery .solenoid-mkii-gif-frame img {
+            height: 100%;
+            width: auto;
+            max-width: none;
             object-fit: contain;
         }
 
@@ -247,8 +252,9 @@
         }
 
         .solenoid-mki-gallery {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             width: 100%;
+            max-width: 1050px;
             justify-self: center;
         }
 
@@ -258,11 +264,21 @@
             margin: 0 auto;
         }
 
+        .solenoid-mki-gallery > .project-photo-frame:first-child {
+            aspect-ratio: 1.55;
+        }
+
         .solenoid-mki-gallery .project-photo-frame img {
             display: block;
             width: 100%;
             height: auto;
             object-fit: contain;
+        }
+
+        .solenoid-mki-gallery > .project-photo-frame:first-child img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .solenoid-mki-gallery .solenoid-mki-render-frame {
@@ -360,6 +376,9 @@
                 width: calc(100% - 20px);
                 margin-left: 20px;
                 padding: 18px;
+            }
+            .solenoid-mki-project[open] .solenoid-mki-gallery {
+                grid-template-columns: 1fr;
             }
             .solenoid-mki-project[open] .solenoid-mki-summary {
                 padding-right: 32px;
